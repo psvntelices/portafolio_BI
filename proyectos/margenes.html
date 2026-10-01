@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Márgenes, costos y presupuesto · Pablo Santelices</title>
+  <meta name="description" content="Dashboard de Power BI de rentabilidad por cliente y contrato, estructura de costos y control presupuestario con forecast.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap project">
+    <a class="back" href="../#proyectos">← Volver a proyectos</a>
+
+    <h1>Márgenes, costos y presupuesto</h1>
+    <p class="lead">Un solo informe para gestión y finanzas: cuánto gana la empresa con cada cliente y contrato, en qué se va el costo, y cómo viene el año frente al presupuesto con la ejecución real más el forecast de los meses que faltan.</p>
+    <ul class="tags"><li>Power BI</li><li>DAX</li><li>Power Query</li><li>Inteligencia de tiempo</li><li>Control presupuestario</li></ul>
+
+    <div class="kpis">
+      <div><strong>3</strong><span>vistas: márgenes, costos y presupuesto</span></div>
+      <div><strong>2</strong><span>niveles de margen: total y marginal, con y sin costos de proyectos</span></div>
+      <div><strong>Mes y año</strong><span>de comparación elegible para ingresos, costos, margen y cobertura</span></div>
+    </div>
+
+    <div class="embed" style="background-image:url(../assets/img/margenes.png)"><iframe title="Informe Márgenes, costos y presupuesto" src="https://app.powerbi.com/view?r=eyJrIjoiZTQ0MjA1ZTMtMDQ3Yi00YTc5LWI3MWItNzg0OTg3ZjUwOWY3IiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" loading="lazy" allowfullscreen></iframe></div>
+    <p class="embed-note">Datos ficticios con la misma estructura que el original. <a href="https://app.powerbi.com/view?r=eyJrIjoiZTQ0MjA1ZTMtMDQ3Yi00YTc5LWI3MWItNzg0OTg3ZjUwOWY3IiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" target="_blank" rel="noopener">Abrir en pantalla completa</a></p>
+
+    <h2>El problema</h2>
+    <p>La rentabilidad se calculaba en planillas separadas por área, con costos directos, horas del equipo y gastos generales en archivos distintos. Era difícil ver qué clientes dejaban margen de verdad, qué parte del costo era variable y si el año iba a cerrar dentro del presupuesto.</p>
+
+    <h2>Datos y proceso</h2>
+    <ul>
+      <li><strong>Fuentes:</strong> planillas de rentabilidad mensual por contrato, dedicación de horas del equipo, gastos y presupuesto, unificadas en Power Query y llevadas a formato largo para analizar cualquier atributo con las mismas medidas.</li>
+      <li><strong>Margen total y marginal:</strong> el margen marginal descuenta solo el costo que cambia con cada cliente, para separar los contratos que cubren su costo directo de los que además aportan a la estructura.</li>
+      <li><strong>Comparación elegible:</strong> el usuario elige comparar el último mes contra el mes anterior o contra el mismo mes del año pasado, y cada tarjeta muestra la variación con su flecha.</li>
+      <li><strong>Presupuesto con forecast:</strong> se combinan presupuesto, ejecución real y forecast para proyectar el cierre del año y medir el cumplimiento comercial.</li>
+    </ul>
+
+    <h2>Una medida DAX destacada</h2>
+    <p>Proyección del año que usa lo ejecutado en los meses cerrados y el forecast en los meses que faltan, sin duplicar ni dejar huecos.</p>
+    <pre><code>Control + Forecast =
+VAR MaxFechaControl =
+    CALCULATE (
+        MAX ( 'Presupuesto Compilado'[Date] ),
+        'Presupuesto Compilado'[Budget Type] = "Control"
+    )
+RETURN
+    SUMX (
+        VALUES ( 'Presupuesto Compilado'[Date] ),
+        VAR FechaActual = 'Presupuesto Compilado'[Date]
+        VAR ControlMes =
+            CALCULATE ( SUM ( 'Presupuesto Compilado'[Value] ),
+                        'Presupuesto Compilado'[Budget Type] = "Control" )
+        VAR ForecastMes =
+            CALCULATE ( SUM ( 'Presupuesto Compilado'[Value] ),
+                        'Presupuesto Compilado'[Budget Type] = "Forecast" )
+        RETURN IF ( FechaActual &lt;= MaxFechaControl, ControlMes, ForecastMes )
+    )</code></pre>
+
+    <h2>Resultado</h2>
+    <!-- EDITA: confirma o ajusta con lo que pasó en la práctica -->
+    <p>Gerencia y finanzas pasaron a revisar la rentabilidad por cliente y el avance del presupuesto en un solo lugar, en vez de consolidar planillas cada mes.</p>
+
+    <p class="note">Por confidencialidad, los clientes, contratos, personas y cifras de este caso son ficticios.</p>
+
+    <footer>
+      <a href="../">← Volver al inicio</a>
+    </footer>
+  </div>
+</body>
+</html>
