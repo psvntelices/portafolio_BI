@@ -7,7 +7,7 @@
   <meta name="description" content="Portafolio de dashboards y reportería en Power BI de Pablo Santelices, Ingeniero Control de Gestión - Business Intelligence.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=3">
+  <link rel="stylesheet" href="assets/style.css?v=4">
 </head>
 <body>
   <div class="wrap">
@@ -15,6 +15,7 @@
       <a class="logo" href="./">Pablo Santelices</a>
       <ul>
         <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
         <li><a href="#habilidades">Habilidades</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
@@ -22,8 +23,9 @@
 
     <header class="hero">
       <span class="eyebrow">Portafolio Power BI</span>
-      <h1>Ingeniero Control de Gestión<br><span class="hl">Business Intelligence</span></h1>
-      <p>Convierto datos dispersos en dashboards de Power BI que ayudan a los equipos a decidir más rápido. Aquí hay una selección de mi trabajo, con datos ficticios para proteger la información de mis clientes.</p>
+      <h1>Business Intelligence &amp;<br><span class="hl">Control de Gestión</span></h1>
+      <p class="stack">Power BI · SQL · DAX · Modelamiento de datos</p>
+      <p>Desarrollo soluciones de BI que conectan información operacional y financiera con las decisiones del negocio.</p>
       <div class="buttons">
         <a class="btn primary" href="#proyectos">Ver proyectos</a>
         <a class="btn" href="https://www.linkedin.com/in/pablosantelices" target="_blank" rel="noopener">LinkedIn</a>
@@ -32,9 +34,19 @@
 
     <section id="proyectos">
       <h2>Proyectos</h2>
+      <p class="section-note">Todos los dashboards usan datos ficticios con la misma estructura que los originales, para proteger la información de los clientes.</p>
       <div class="grid">
 
         <!-- Copia este bloque <a class="card"> por cada dashboard -->
+        <a class="card" href="proyectos/margenes.html">
+          <img src="assets/img/margenes.png" alt="Portada del dashboard Márgenes, costos y presupuesto">
+          <div class="body">
+            <h3>Márgenes, costos y presupuesto</h3>
+            <p>Rentabilidad por cliente y contrato, estructura de costos y cierre del año proyectado contra el presupuesto.</p>
+            <ul class="tags"><li>Power BI</li><li>DAX</li><li>Power Query</li><li>Forecast</li><li>RLS</li></ul>
+          </div>
+        </a>
+
         <a class="card" href="proyectos/entrega-perfecta.html">
           <img src="assets/img/entrega-perfecta.png" alt="Portada del dashboard Calidad de ejecución">
           <div class="body">
@@ -53,15 +65,14 @@
           </div>
         </a>
 
-        <a class="card" href="proyectos/margenes.html">
-          <img src="assets/img/margenes.png" alt="Portada del dashboard Márgenes, costos y presupuesto">
-          <div class="body">
-            <h3>Márgenes, costos y presupuesto</h3>
-            <p>Rentabilidad por cliente y contrato, estructura de costos y cierre del año proyectado contra el presupuesto.</p>
-            <ul class="tags"><li>Power BI</li><li>DAX</li><li>Power Query</li><li>Forecast</li><li>RLS</li></ul>
-          </div>
-        </a>
+      </div>
+    </section>
 
+    <section id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <div class="about">
+        <p><strong>Ingeniero Civil Industrial especializado en Business Intelligence y Control de Gestión.</strong></p>
+        <p>Tengo experiencia desarrollando soluciones de Power BI para seguimiento operacional, rentabilidad, costos, presupuesto y KPIs. Trabajo desde la extracción y transformación de datos hasta el modelamiento, desarrollo del dashboard y análisis para la toma de decisiones.</p>
       </div>
     </section>
 
@@ -81,7 +92,6 @@
         <li><a href="https://www.linkedin.com/in/pablosantelices" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>linkedin.com/in/pablosantelices</a></li>
         <li><a href="mailto:pabloignaciosnts@gmail.com"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 5h18v14H3z M3 6l9 7 9-7"/></svg>pabloignaciosnts@gmail.com</a></li>
       </ul>
-      <p>Todos los dashboards de este sitio usan datos ficticios o anonimizados.</p>
     </footer>
   </div>
 </body>

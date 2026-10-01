@@ -7,7 +7,7 @@
   <meta name="description" content="Dashboard de Power BI que mide la calidad de ejecución de entregas y traslados en terreno.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/style.css?v=3">
+  <link rel="stylesheet" href="../assets/style.css?v=4">
 </head>
 <body>
   <div class="wrap project">
@@ -38,9 +38,11 @@
       <li><strong>Reporte semanal:</strong> semáforo por indicador, variación contra las dos semanas anteriores y evolución de los puntos planificados por cliente.</li>
     </ul>
 
-    <h2>Una medida DAX destacada</h2>
-    <p>Puntualidad con umbrales distintos según el tipo de servicio, que además exige que la parada se haya reportado cerca del punto.</p>
-    <pre><code>TotalPuntuales =
+    <h2>DAX destacado</h2>
+    <p>Cálculo de puntualidad utilizando umbrales diferenciados por tipo de servicio y validación de distancia al punto de atención.</p>
+    <details class="dax">
+      <summary>Ver medida DAX <span class="arrow">→</span></summary>
+      <pre><code>TotalPuntuales =
 VAR MinCarga = [Valor de PuntualidadCarga]
 VAR MinPasajeros = [Valor de PuntualidadPasajeros]
 VAR Distancia = [Valor de Distancias]
@@ -59,6 +61,7 @@ CALCULATE (
                    EntregaPerfecta[delta_minutos] &lt;= MinPasajeros )
     )
 )</code></pre>
+    </details>
 
     <h2>Resultado</h2>
     <!-- EDITA: confirma o ajusta con lo que pasó en la práctica -->

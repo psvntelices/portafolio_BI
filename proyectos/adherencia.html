@@ -7,7 +7,7 @@
   <meta name="description" content="Dashboard de Power BI que mide qué tanto se respetan las rutas planificadas por un software de ruteo.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/style.css?v=3">
+  <link rel="stylesheet" href="../assets/style.css?v=4">
 </head>
 <body>
   <div class="wrap project">
@@ -37,9 +37,11 @@
       <li><strong>Segunda vista de desempeño:</strong> distancia promedio ponderada (WAD), ocupación por carga y por tiempo, tamaño de entrega y porcentaje de rutas manuales, con ejes X e Y seleccionables para comparar indicadores entre sí.</li>
     </ul>
 
-    <h2>Una medida DAX destacada</h2>
+    <h2>DAX destacado</h2>
     <p>Alerta que se enciende cuando un indicador cae varias semanas seguidas. Compara cada semana con la anterior y cuenta la racha actual de bajas.</p>
-    <pre><code>AvisoAdherencia =
+    <details class="dax">
+      <summary>Ver medida DAX <span class="arrow">→</span></summary>
+      <pre><code>AvisoAdherencia =
 VAR UltimaSemana = MAXX ( ALL ( Adherencia ), MAX ( Calendario[Semana] ) )
 VAR PorSemana =
     ADDCOLUMNS (
@@ -56,6 +58,7 @@ VAR ConTendencia =
 VAR UltimaSinBaja = MAXX ( FILTER ( ConTendencia, [Semana] &lt;= UltimaSemana &amp;&amp; [Baja] = 0 ), [Semana] )
 VAR Racha = COUNTROWS ( FILTER ( ConTendencia, [Semana] &gt; UltimaSinBaja &amp;&amp; [Semana] &lt;= UltimaSemana ) )
 RETURN IF ( Racha &gt;= 2, "⚠️ 3 semanas bajando", "OK" )</code></pre>
+    </details>
 
     <h2>Resultado</h2>
     <!-- EDITA: confirma o ajusta con lo que pasó en la práctica -->

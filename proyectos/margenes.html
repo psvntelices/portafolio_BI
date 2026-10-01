@@ -7,7 +7,7 @@
   <meta name="description" content="Dashboard de Power BI de rentabilidad por cliente y contrato, estructura de costos y control presupuestario con forecast.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/style.css?v=3">
+  <link rel="stylesheet" href="../assets/style.css?v=4">
 </head>
 <body>
   <div class="wrap project">
@@ -37,9 +37,11 @@
       <li><strong>Presupuesto con forecast:</strong> se combinan presupuesto, ejecución real y forecast para proyectar el cierre del año y medir el cumplimiento comercial.</li>
     </ul>
 
-    <h2>Una medida DAX destacada</h2>
+    <h2>DAX destacado</h2>
     <p>Proyección del año que usa lo ejecutado en los meses cerrados y el forecast en los meses que faltan, sin duplicar ni dejar huecos.</p>
-    <pre><code>Control + Forecast =
+    <details class="dax">
+      <summary>Ver medida DAX <span class="arrow">→</span></summary>
+      <pre><code>Control + Forecast =
 VAR MaxFechaControl =
     CALCULATE (
         MAX ( 'Presupuesto Compilado'[Date] ),
@@ -57,6 +59,7 @@ RETURN
                         'Presupuesto Compilado'[Budget Type] = "Forecast" )
         RETURN IF ( FechaActual &lt;= MaxFechaControl, ControlMes, ForecastMes )
     )</code></pre>
+    </details>
 
     <h2>Resultado</h2>
     <!-- EDITA: confirma o ajusta con lo que pasó en la práctica -->
