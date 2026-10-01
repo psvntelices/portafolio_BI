@@ -157,3 +157,26 @@ footer { border-top: 1px solid var(--border); padding: 28px 0 40px; margin-top: 
 .project .lead { max-width: 90ch; }
 
 @media (min-width: 1600px) { body { font-size: 17px; } }
+
+/* Informe en celular: captura y botón en vez del iframe */
+.embed-mobile { display: none; position: relative; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; text-decoration: none; }
+.embed-mobile img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; background: #fff; }
+.embed-mobile span { display: block; text-align: center; padding: 12px; font-weight: 600; color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+@media (max-width: 640px) {
+  .embed { display: none; }
+  .embed-mobile { display: block; }
+  .embed-note a { display: none; }
+  .kpis { grid-template-columns: 1fr; gap: 10px; }
+  .kpis div { display: flex; align-items: baseline; gap: 12px; padding: 12px 14px; }
+  .kpis strong { font-size: 1.2rem; flex: none; min-width: 5.5em; }
+}
+
+/* Cierre de cada ficha */
+.next-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px; margin: 40px 0 0; }
+.next-card { display: flex; gap: 16px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; text-decoration: none; transition: border-color .2s, transform .2s; }
+.next-card:hover { border-color: rgba(169,139,255,.55); transform: translateY(-2px); }
+.next-card img { width: 120px; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border-radius: 8px; background: #fff; flex: none; }
+.next-card .next-label { display: block; color: var(--accent); font-size: .85rem; font-weight: 600; margin-bottom: 4px; }
+.next-card strong { font-size: 1.05rem; }
+.cta { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent-2); border-radius: var(--radius); padding: 16px 20px; }
+.cta .contact { margin: 0; }

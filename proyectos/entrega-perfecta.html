@@ -5,9 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calidad de ejecución de rutas · Pablo Santelices</title>
   <meta name="description" content="Dashboard de Power BI que mide la calidad de ejecución de entregas y traslados en terreno.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Calidad de ejecución de rutas · Pablo Santelices">
+  <meta property="og:description" content="Dashboard de Power BI que mide la calidad de ejecución de entregas y traslados en terreno.">
+  <meta property="og:image" content="https://psvntelices.github.io/portafolio_BI/assets/img/card-ejecucion.jpg">
+  <meta property="og:url" content="https://psvntelices.github.io/portafolio_BI/proyectos/entrega-perfecta.html">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/style.css?v=11">
+  <link rel="stylesheet" href="../assets/style.css?v=12">
 </head>
 <body>
   <div class="wrap project">
@@ -18,12 +25,13 @@
     <ul class="tags"><li>Power BI</li><li>DAX</li><li>SQL (PostgreSQL)</li><li>Power Query</li><li>Parámetros what-if</li></ul>
 
     <div class="kpis">
-      <div><strong>7</strong><span>indicadores de ejecución, del asignado al puntual</span></div>
-      <div><strong>4</strong><span>umbrales ajustables por el usuario</span></div>
-      <div><strong>16 semanas</strong><span>de seguimiento con comparación semana a semana</span></div>
+      <div><strong>Diario</strong><span>seguimiento de la operación en terreno</span></div>
+      <div><strong>7 etapas</strong><span>de la asignación a la entrega puntual, en una sola cadena</span></div>
+      <div><strong>4 umbrales</strong><span>ajustables para simular otros estándares de servicio</span></div>
     </div>
 
     <div class="embed" style="background-image:url(../assets/img/entrega-perfecta.png)"><iframe title="Informe Calidad de ejecución de rutas" src="https://app.powerbi.com/view?r=eyJrIjoiMjUxODkxY2MtZWQ0Zi00OWVlLThiOWItZjBiZDc5MzQxZjcwIiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" loading="lazy" allowfullscreen></iframe></div>
+    <a class="embed-mobile" href="https://app.powerbi.com/view?r=eyJrIjoiMjUxODkxY2MtZWQ0Zi00OWVlLThiOWItZjBiZDc5MzQxZjcwIiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" target="_blank" rel="noopener"><img src="../assets/img/card-ejecucion.jpg" alt="Vista del dashboard Calidad de ejecución de rutas" loading="lazy"><span>Abrir informe interactivo ↗</span></a>
     <p class="embed-note">Datos ficticios con la misma estructura que el original. <a href="https://app.powerbi.com/view?r=eyJrIjoiMjUxODkxY2MtZWQ0Zi00OWVlLThiOWItZjBiZDc5MzQxZjcwIiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" target="_blank" rel="noopener">Abrir en pantalla completa</a></p>
 
     <div class="biz">
@@ -41,8 +49,7 @@
     </ul>
 
     <h2>Resultado</h2>
-    <!-- EDITA: confirma o ajusta con lo que pasó en la práctica -->
-    <p>Customer Success usaba el reporte semanal para preparar las reuniones con cada cliente: mostraba qué etapa explicaba la caída y permitía acordar acciones concretas, como capacitar a conductores en el reporte en terreno.</p>
+    <p>El equipo lo usaba todos los días para seguir la calidad de ejecución por cliente y centro de distribución, y detectar a tiempo en qué etapa se perdía calidad.</p>
 
     <h2>Stack</h2>
     <p class="stack-line">Power BI · DAX · SQL (PostgreSQL) · Power Query · Parámetros what-if</p>
@@ -82,6 +89,20 @@ CALCULATE (
     </details>
 
     <p class="note">Por confidencialidad, los clientes, depots, personas y cifras de este caso son ficticios.</p>
+
+    <div class="next-steps">
+      <a class="next-card" href="adherencia.html">
+        <img src="../assets/img/card-planificacion.jpg" alt="" loading="lazy">
+        <div><span class="next-label">Siguiente proyecto →</span><strong>Calidad de planificación de rutas</strong></div>
+      </a>
+      <div class="cta">
+        <p class="contact-title">¿Te interesa este tipo de solución para tu equipo?</p>
+        <ul class="contact">
+          <li><a href="https://www.linkedin.com/in/pablosantelices" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>linkedin.com/in/pablosantelices</a></li>
+          <li><a href="mailto:pabloignaciosnts@gmail.com"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 5h18v14H3z M3 6l9 7 9-7"/></svg>pabloignaciosnts@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
 
     <footer>
       <a href="../">← Volver al inicio</a>
