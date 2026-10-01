@@ -94,3 +94,7 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 pre code { border: 0; padding: 0; }
 
 footer { border-top: 1px solid var(--border); padding: 28px 0 40px; margin-top: 40px; color: var(--muted); font-size: .9rem; }
+
+/* Espacio reservado mientras falta el enlace público del informe */
+.embed-pending { display: grid; place-items: center; text-align: center; aspect-ratio: 16 / 9; max-width: 100%; border: 1px dashed var(--border); border-radius: var(--radius); background: var(--surface); color: var(--muted); padding: 16px; }
+.embed-note { color: var(--muted); font-size: .88rem; margin: 8px 0 24px; }

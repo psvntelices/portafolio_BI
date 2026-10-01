@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calidad de planificación · Pablo Santelices</title>
+  <meta name="description" content="Dashboard de Power BI que mide qué tanto se respetan las rutas planificadas por un software de ruteo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap project">
+    <a class="back" href="../#proyectos">← Volver a proyectos</a>
+
+    <h1>Calidad de planificación de rutas</h1>
+    <p class="lead">Un software de ruteo propone las rutas de reparto y los planificadores de cada cliente las ajustan antes de aprobarlas. Este dashboard mide cuánto se respetó el plan optimizado y avisa cuando la calidad de planificación viene cayendo, para que el equipo actúe antes de que el cliente lo note.</p>
+    <ul class="tags"><li>Power BI</li><li>DAX</li><li>SQL (PostgreSQL)</li><li>Power Query</li><li>Parámetros de campo</li></ul>
+
+    <div class="kpis">
+      <div><strong>3</strong><span>indicadores de calidad: adherencia, salud y factibilidad</span></div>
+      <div><strong>4</strong><span>vistas con un clic: cliente, organización, depot y planificador</span></div>
+      <div><strong>14 meses</strong><span>de historia, a nivel diario, semanal o mensual</span></div>
+    </div>
+
+    <!-- INFORME: reemplazar este bloque por el iframe cuando esté el enlace público -->
+    <div class="embed-pending">Informe interactivo en preparación</div>
+    <p class="embed-note">Datos ficticios con la misma estructura que el original.</p>
+
+    <h2>El problema</h2>
+    <p>Cuando un planificador cambia muchas rutas a mano, se pierde el ahorro que calculó el optimizador. Antes no había una forma simple de saber qué clientes, centros de distribución o planificadores se alejaban del plan, ni si la situación mejoraba o empeoraba semana a semana.</p>
+
+    <h2>Datos y proceso</h2>
+    <ul>
+      <li><strong>Fuente:</strong> consulta SQL sobre PostgreSQL que agrega los itinerarios aprobados de los últimos 14 meses y calcula ponderadores por demanda en la base de datos, para que el modelo cargue solo lo necesario.</li>
+      <li><strong>Indicadores ponderados:</strong> adherencia de orden y de pertenencia de cada parada, ponderadas por la cantidad de demandas editadas, en vez de un promedio simple que favorecería a las rutas chicas.</li>
+      <li><strong>Parámetros de campo:</strong> el usuario elige el indicador, la granularidad de fecha y la dimensión de análisis, y la matriz y el título cambian solos.</li>
+      <li><strong>Segunda vista de desempeño:</strong> distancia promedio ponderada (WAD), ocupación por carga y por tiempo, tamaño de entrega y porcentaje de rutas manuales, con ejes X e Y seleccionables para comparar indicadores entre sí.</li>
+    </ul>
+
+    <h2>Una medida DAX destacada</h2>
+    <p>Alerta que se enciende cuando un indicador cae varias semanas seguidas. Compara cada semana con la anterior y cuenta la racha actual de bajas.</p>
+    <pre><code>AvisoAdherencia =
+VAR UltimaSemana = MAXX ( ALL ( Adherencia ), MAX ( Calendario[Semana] ) )
+VAR PorSemana =
+    ADDCOLUMNS (
+        SUMMARIZE ( Adherencia, Calendario[Semana] ),
+        "Valor", DIVIDE ( SUM ( Adherencia[ponderador_adherencia] ),
+                          SUM ( Adherencia[edited_demands_divisor] ) )
+    )
+VAR ConTendencia =
+    ADDCOLUMNS ( PorSemana, "Baja",
+        VAR S = [Semana]
+        VAR Ant = MAXX ( FILTER ( PorSemana, [Semana] &lt; S ), [Semana] )
+        VAR ValorAnt = MAXX ( FILTER ( PorSemana, [Semana] = Ant ), [Valor] )
+        RETURN IF ( NOT ISBLANK ( ValorAnt ) &amp;&amp; [Valor] &lt; ValorAnt, 1, 0 ) )
+VAR UltimaSinBaja = MAXX ( FILTER ( ConTendencia, [Semana] &lt;= UltimaSemana &amp;&amp; [Baja] = 0 ), [Semana] )
+VAR Racha = COUNTROWS ( FILTER ( ConTendencia, [Semana] &gt; UltimaSinBaja &amp;&amp; [Semana] &lt;= UltimaSemana ) )
+RETURN IF ( Racha &gt;= 2, "⚠️ 3 semanas bajando", "OK" )</code></pre>
+
+    <h2>Resultado</h2>
+    <!-- EDITA: confirma o ajusta con lo que pasó en la práctica -->
+    <p>El equipo pasó de revisar casos aislados a tener una vista semanal de la calidad de planificación por cliente, con alertas automáticas que indican dónde conversar primero.</p>
+
+    <p class="note">Por confidencialidad, los clientes, depots, planificadores y cifras de este caso son ficticios.</p>
+
+    <footer>
+      <a href="../">← Volver al inicio</a>
+    </footer>
+  </div>
+</body>
+</html>

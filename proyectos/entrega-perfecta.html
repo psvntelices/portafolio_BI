@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrega Perfecta · Pablo Santelices</title>
+  <meta name="description" content="Dashboard de Power BI que mide la calidad de ejecución de entregas y traslados en terreno.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap project">
+    <a class="back" href="../#proyectos">← Volver a proyectos</a>
+
+    <h1>Entrega Perfecta</h1>
+    <p class="lead">Una entrega es "perfecta" cuando se asigna, se reporta, se hace en el lugar correcto, a tiempo y en el orden planificado. Este dashboard mide cada una de esas etapas para empresas de carga y de transporte de pasajeros, y muestra cada semana en qué paso se pierde calidad.</p>
+    <ul class="tags"><li>Power BI</li><li>DAX</li><li>SQL (PostgreSQL)</li><li>Power Query</li><li>Parámetros what-if</li></ul>
+
+    <div class="kpis">
+      <div><strong>7</strong><span>indicadores de ejecución, del asignado al puntual</span></div>
+      <div><strong>4</strong><span>umbrales ajustables por el usuario</span></div>
+      <div><strong>16 semanas</strong><span>de seguimiento con comparación semana a semana</span></div>
+    </div>
+
+    <!-- INFORME: reemplazar este bloque por el iframe cuando esté el enlace público -->
+    <div class="embed-pending">Informe interactivo en preparación</div>
+    <p class="embed-note">Datos ficticios con la misma estructura que el original.</p>
+
+    <h2>El problema</h2>
+    <p>Los clientes evaluaban el servicio por la calidad de sus entregas, pero cada área lo medía distinto y nadie veía la cadena completa. Hacía falta una definición común de "entrega perfecta" y una forma rápida de ver en qué etapa fallaba cada cliente o centro de distribución.</p>
+
+    <h2>Datos y proceso</h2>
+    <ul>
+      <li><strong>Fuente:</strong> consultas SQL sobre PostgreSQL que toman el último evento de cada parada con una función de ventana y agregan las paradas en la base de datos, agrupando distancias en tramos de 100 m y atrasos en tramos de 5 minutos.</li>
+      <li><strong>Limpieza en Power Query:</strong> se corrigen fechas planificadas inválidas, se acotan valores extremos y se unen las fuentes de dos plataformas distintas.</li>
+      <li><strong>Indicadores en cadena:</strong> asignados, reportados, exitosos, en orden, en lugar, puntuales y "sin doble clic", que detecta reportes hechos en segundos, sin estar realmente en el punto.</li>
+      <li><strong>Umbrales what-if:</strong> el usuario ajusta la tolerancia de puntualidad para carga y para pasajeros, la distancia aceptada y el tiempo mínimo de servicio, y todos los indicadores se recalculan.</li>
+      <li><strong>Reporte semanal:</strong> semáforo por indicador, variación contra las dos semanas anteriores y evolución de los puntos planificados por cliente.</li>
+    </ul>
+
+    <h2>Una medida DAX destacada</h2>
+    <p>Puntualidad con umbrales distintos según el tipo de servicio, que además exige que la parada se haya reportado cerca del punto.</p>
+    <pre><code>TotalPuntuales =
+VAR MinCarga = [Valor de PuntualidadCarga]
+VAR MinPasajeros = [Valor de PuntualidadPasajeros]
+VAR Distancia = [Valor de Distancias]
+RETURN
+CALCULATE (
+    SUM ( EntregaPerfecta[traslado_reportado] ),
+    EntregaPerfecta[item_type] IN { "STOP", "EXTRA_STOP" },
+    EntregaPerfecta[ruta_iniciada] = 1,
+    FILTER (
+        EntregaPerfecta,
+        NOT ISBLANK ( EntregaPerfecta[delta_minutos] )
+            &amp;&amp; ( EntregaPerfecta[metros_arribo] &lt;= Distancia
+                 || EntregaPerfecta[metros_reporte] &lt;= Distancia )
+            &amp;&amp; IF ( EntregaPerfecta[servicio] = "Carga",
+                   EntregaPerfecta[delta_minutos] &lt;= MinCarga,
+                   EntregaPerfecta[delta_minutos] &lt;= MinPasajeros )
+    )
+)</code></pre>
+
+    <h2>Resultado</h2>
+    <!-- EDITA: confirma o ajusta con lo que pasó en la práctica -->
+    <p>Customer Success usaba el reporte semanal para preparar las reuniones con cada cliente: mostraba qué etapa explicaba la caída y permitía acordar acciones concretas, como capacitar a conductores en el reporte en terreno.</p>
+
+    <p class="note">Por confidencialidad, los clientes, depots, personas y cifras de este caso son ficticios.</p>
+
+    <footer>
+      <a href="../">← Volver al inicio</a>
+    </footer>
+  </div>
+</body>
+</html>
