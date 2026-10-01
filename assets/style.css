@@ -189,3 +189,35 @@ footer { border-top: 1px solid var(--border); padding: 28px 0 40px; margin-top: 
 a:focus-visible, summary:focus-visible, button:focus-visible { outline: 2px solid #c4b2ff; outline-offset: 3px; border-radius: 6px; }
 .btn:focus-visible, .dax summary:focus-visible { border-radius: 999px; }
 .card:focus-visible, .next-card:focus-visible, .embed-mobile:focus-visible { outline-offset: 4px; border-radius: var(--radius); }
+
+/* Ajustes del análisis UX final */
+/* Botones principales con más contraste para el texto blanco */
+.btn.primary { background: linear-gradient(135deg, #7454f0, #5b3fd1); }
+.embed-mobile span { background: linear-gradient(135deg, #7454f0, #5b3fd1); }
+
+/* El informe siempre cabe completo en la altura de la ventana */
+.embed { width: min(100%, calc((100svh - 110px) * 16 / 9)); margin-inline: auto; }
+
+/* Bloque DAX sin franjas por línea */
+pre code { background: none; }
+
+/* Títulos de contacto como encabezados */
+h2.contact-title, .project h2.contact-title { font-size: 1.15rem; font-weight: 700; line-height: 1.35; margin: 0 0 12px; letter-spacing: 0; }
+
+/* Etiquetas sin cortes internos */
+.tags li { white-space: nowrap; }
+
+/* Tablet: dos columnas y la última tarjeta impar ocupa todo el ancho */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .grid, .skill-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid > .card:last-child:nth-child(odd) { grid-column: 1 / -1; flex-direction: row; }
+  .grid > .card:last-child:nth-child(odd) img { width: 50%; aspect-ratio: auto; height: 100%; min-height: 220px; border-bottom: 0; border-right: 1px solid var(--border); }
+  .grid > .card:last-child:nth-child(odd) .body { flex: 1; align-self: center; }
+  .skill-groups > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+
+/* Celular: columna fija para las cifras de cada ficha */
+@media (max-width: 640px) {
+  .kpis div { display: grid; grid-template-columns: 8.4rem 1fr; gap: 12px; align-items: baseline; }
+  .kpis strong { min-width: 0; font-size: 1.1rem; }
+}

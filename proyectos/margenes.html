@@ -14,11 +14,22 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/style.css?v=13">
+  <link rel="stylesheet" href="../assets/style.css?v=14">
 </head>
 <body>
   <div class="wrap project">
+    <nav class="nav">
+      <a class="logo" href="../">Pablo Santelices</a>
+      <ul>
+        <li><a href="../#proyectos">Proyectos</a></li>
+        <li><a href="../#sobre-mi">Sobre mí</a></li>
+        <li><a href="../#habilidades">Habilidades</a></li>
+        <li><a href="../#contacto">Contacto</a></li>
+      </ul>
+    </nav>
     <a class="back" href="../#proyectos">← Volver a proyectos</a>
+
+    <main>
 
     <h1>Márgenes, costos y presupuesto</h1>
     <p class="lead">Un solo informe para gestión y finanzas: cuánto gana la empresa con cada cliente y contrato, en qué se va el costo, y cómo viene el año frente al presupuesto con la ejecución real más el forecast de los meses que faltan.</p>
@@ -30,7 +41,7 @@
       <div><strong>Cierre anual</strong><span>proyectado con la ejecución real más el forecast</span></div>
     </div>
 
-    <div class="embed" style="background-image:url(../assets/img/margenes.png)"><iframe title="Informe Márgenes, costos y presupuesto" src="https://app.powerbi.com/view?r=eyJrIjoiZTQ0MjA1ZTMtMDQ3Yi00YTc5LWI3MWItNzg0OTg3ZjUwOWY3IiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" loading="lazy" allowfullscreen></iframe></div>
+    <div class="embed" style="background-image:url(../assets/img/margenes.jpg)"><iframe title="Informe Márgenes, costos y presupuesto" src="https://app.powerbi.com/view?r=eyJrIjoiZTQ0MjA1ZTMtMDQ3Yi00YTc5LWI3MWItNzg0OTg3ZjUwOWY3IiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" loading="lazy" allowfullscreen></iframe></div>
     <a class="embed-mobile" href="https://app.powerbi.com/view?r=eyJrIjoiZTQ0MjA1ZTMtMDQ3Yi00YTc5LWI3MWItNzg0OTg3ZjUwOWY3IiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" target="_blank" rel="noopener"><img src="../assets/img/card-margenes.jpg" alt="Vista del dashboard Márgenes, costos y presupuesto" loading="lazy"><span>Abrir informe interactivo ↗</span></a>
     <p class="embed-note">Datos ficticios con la misma estructura que el original. <a href="https://app.powerbi.com/view?r=eyJrIjoiZTQ0MjA1ZTMtMDQ3Yi00YTc5LWI3MWItNzg0OTg3ZjUwOWY3IiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" target="_blank" rel="noopener">Abrir en pantalla completa</a></p>
 
@@ -49,10 +60,10 @@
     </ul>
 
     <h2>Resultado</h2>
-    <p>Se usaba principalmente al inicio y al cierre de cada mes. Gerencia y finanzas pasaron a revisar la rentabilidad por cliente y el avance del presupuesto en un solo lugar, en vez de consolidar planillas.</p>
+    <p>Gerencia y finanzas pasaron a revisar la rentabilidad por cliente y el avance del presupuesto en un solo lugar, en vez de consolidar planillas.</p>
 
     <h2>Stack</h2>
-    <p class="stack-line">Power BI · DAX · Power Query · Excel</p>
+    <p class="stack-line">Power BI · DAX · Power&nbsp;Query · Excel</p>
 
     <h2>Cómo se construyó</h2>
     <ul>
@@ -88,13 +99,15 @@ RETURN
 
     <p class="note">Por confidencialidad, los clientes, contratos, personas y cifras de este caso son ficticios.</p>
 
+    </main>
+
     <div class="next-steps">
       <a class="next-card" href="entrega-perfecta.html">
         <img src="../assets/img/card-ejecucion.jpg" alt="" loading="lazy">
         <div><span class="next-label">Siguiente proyecto →</span><strong>Calidad de ejecución de rutas</strong></div>
       </a>
       <div class="cta">
-        <p class="contact-title">¿Te interesa este tipo de solución para tu equipo?</p>
+        <h2 class="contact-title">¿Buscas a alguien que construya algo así en tu equipo? Conversemos.</h2>
         <ul class="contact">
           <li><a href="https://www.linkedin.com/in/pablosantelices" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>linkedin.com/in/pablosantelices</a></li>
           <li><a href="mailto:pabloignaciosnts@gmail.com"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 5h18v14H3z M3 6l9 7 9-7"/></svg>pabloignaciosnts@gmail.com</a></li>

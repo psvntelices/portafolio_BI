@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Calidad de planificación · Pablo Santelices</title>
+  <title>Calidad de planificación de rutas · Pablo Santelices</title>
   <meta name="description" content="Dashboard de Power BI que mide qué tanto se respetan las rutas planificadas por un software de ruteo.">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="article">
@@ -14,15 +14,26 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/style.css?v=13">
+  <link rel="stylesheet" href="../assets/style.css?v=14">
 </head>
 <body>
   <div class="wrap project">
+    <nav class="nav">
+      <a class="logo" href="../">Pablo Santelices</a>
+      <ul>
+        <li><a href="../#proyectos">Proyectos</a></li>
+        <li><a href="../#sobre-mi">Sobre mí</a></li>
+        <li><a href="../#habilidades">Habilidades</a></li>
+        <li><a href="../#contacto">Contacto</a></li>
+      </ul>
+    </nav>
     <a class="back" href="../#proyectos">← Volver a proyectos</a>
+
+    <main>
 
     <h1>Calidad de planificación de rutas</h1>
     <p class="lead">Un software de ruteo propone las rutas de reparto y los planificadores de cada cliente las ajustan antes de aprobarlas. Este dashboard mide cuánto se respetó el plan optimizado y avisa cuando la calidad de planificación viene cayendo, para que el equipo actúe antes de que el cliente lo note.</p>
-    <ul class="tags"><li>Power BI</li><li>DAX</li><li>SQL (PostgreSQL)</li><li>Power Query</li><li>Parámetros de campo</li></ul>
+    <ul class="tags"><li>Power BI</li><li>DAX</li><li>SQL (PostgreSQL)</li><li>Power Query</li><li>Parámetros de campo (Field Parameters)</li></ul>
 
     <div class="kpis">
       <div><strong>Diario</strong><span>seguimiento de la calidad del plan de rutas</span></div>
@@ -30,7 +41,7 @@
       <div><strong>Alertas</strong><span>automáticas cuando la calidad cae varias semanas seguidas</span></div>
     </div>
 
-    <div class="embed" style="background-image:url(../assets/img/adherencia.png)"><iframe title="Informe Calidad de planificación" src="https://app.powerbi.com/view?r=eyJrIjoiZDQ1M2U2YTEtYTUxYy00YTBhLThiMjQtZDViM2VlYWZiYjNlIiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" loading="lazy" allowfullscreen></iframe></div>
+    <div class="embed" style="background-image:url(../assets/img/adherencia.jpg)"><iframe title="Informe Calidad de planificación de rutas" src="https://app.powerbi.com/view?r=eyJrIjoiZDQ1M2U2YTEtYTUxYy00YTBhLThiMjQtZDViM2VlYWZiYjNlIiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" loading="lazy" allowfullscreen></iframe></div>
     <a class="embed-mobile" href="https://app.powerbi.com/view?r=eyJrIjoiZDQ1M2U2YTEtYTUxYy00YTBhLThiMjQtZDViM2VlYWZiYjNlIiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" target="_blank" rel="noopener"><img src="../assets/img/card-planificacion.jpg" alt="Vista del dashboard Calidad de planificación de rutas" loading="lazy"><span>Abrir informe interactivo ↗</span></a>
     <p class="embed-note">Datos ficticios con la misma estructura que el original. <a href="https://app.powerbi.com/view?r=eyJrIjoiZDQ1M2U2YTEtYTUxYy00YTBhLThiMjQtZDViM2VlYWZiYjNlIiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" target="_blank" rel="noopener">Abrir en pantalla completa</a></p>
 
@@ -51,7 +62,7 @@
     <p>El equipo lo revisaba todos los días para ver qué clientes, depots o planificadores se alejaban del plan, con alertas automáticas que indican dónde conversar primero.</p>
 
     <h2>Stack</h2>
-    <p class="stack-line">Power BI · DAX · SQL (PostgreSQL) · Power Query · Parámetros de campo</p>
+    <p class="stack-line">Power BI · DAX · SQL (PostgreSQL) · Power&nbsp;Query · Parámetros de campo (Field Parameters)</p>
 
     <h2>Cómo se construyó</h2>
     <ul>
@@ -86,13 +97,15 @@ RETURN IF ( Racha &gt;= 2, "⚠️ 3 semanas bajando", "OK" )</code></pre>
 
     <p class="note">Por confidencialidad, los clientes, depots, planificadores y cifras de este caso son ficticios.</p>
 
+    </main>
+
     <div class="next-steps">
       <a class="next-card" href="margenes.html">
         <img src="../assets/img/card-margenes.jpg" alt="" loading="lazy">
         <div><span class="next-label">Siguiente proyecto →</span><strong>Márgenes, costos y presupuesto</strong></div>
       </a>
       <div class="cta">
-        <p class="contact-title">¿Te interesa este tipo de solución para tu equipo?</p>
+        <h2 class="contact-title">¿Buscas a alguien que construya algo así en tu equipo? Conversemos.</h2>
         <ul class="contact">
           <li><a href="https://www.linkedin.com/in/pablosantelices" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>linkedin.com/in/pablosantelices</a></li>
           <li><a href="mailto:pabloignaciosnts@gmail.com"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 5h18v14H3z M3 6l9 7 9-7"/></svg>pabloignaciosnts@gmail.com</a></li>

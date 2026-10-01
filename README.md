@@ -1,39 +1,24 @@
-# Portafolio de Power BI
+# Pablo Santelices · Business Intelligence & Control de Gestión
 
-Sitio estático (HTML + CSS, sin dependencias) pensado para publicarse gratis en GitHub Pages.
+Portafolio de soluciones de Business Intelligence: **https://psvntelices.github.io/portafolio_BI/**
 
-## Estructura
+Ingeniero Civil Industrial especializado en Business Intelligence y Control de Gestión. Desarrollo soluciones de BI que conectan información operacional y financiera con la toma de decisiones, desde la extracción y transformación de datos hasta el modelamiento, visualización y análisis.
 
-```
-index.html            Página principal: presentación, tarjetas de proyectos, habilidades, contacto
-proyectos/ventas.html Plantilla de página de detalle (cópiala por cada dashboard)
-assets/style.css      Estilos (colores en :root, arriba del archivo)
-assets/img/           Capturas y GIFs de tus dashboards
-```
+## Proyectos
 
-## Cómo agregar un dashboard
+| Proyecto | Qué resuelve | Herramientas |
+|---|---|---|
+| [Márgenes, costos y presupuesto](https://psvntelices.github.io/portafolio_BI/proyectos/margenes.html) | Rentabilidad por cliente y contrato, estructura de costos y cierre del año proyectado contra el presupuesto. | Power BI, DAX, Power Query, RLS |
+| [Calidad de ejecución de rutas](https://psvntelices.github.io/portafolio_BI/proyectos/entrega-perfecta.html) | Siete indicadores de ejecución en terreno, del asignado al puntual, con umbrales ajustables. | Power BI, DAX, SQL (PostgreSQL), Parámetros What-if |
+| [Calidad de planificación de rutas](https://psvntelices.github.io/portafolio_BI/proyectos/adherencia.html) | Cuánto se respeta el plan del optimizador de rutas, con alertas cuando la calidad cae. | Power BI, DAX, SQL (PostgreSQL), Parámetros de campo |
 
-1. Copia `proyectos/ventas.html` con otro nombre, por ejemplo `proyectos/inventario.html`.
-2. Guarda la captura o el GIF en `assets/img/` y cambia la ruta de la imagen.
-3. Rellena problema, proceso, medida DAX e impacto.
-4. En `index.html`, copia un bloque `<a class="card">` y apúntalo a la nueva página.
+Cada proyecto incluye el informe interactivo de Power BI, el problema de negocio, las decisiones que permite y una medida DAX destacada.
 
-Busca `EDITA:` en los archivos para encontrar lo que falta personalizar.
+## Sobre los datos
 
-## Antes de publicar un dashboard: anonimizar
+Todos los dashboards usan **datos ficticios** con la misma estructura que los originales, para proteger la información de los clientes. Los nombres de clientes, personas y cifras son inventados.
 
-- Trabaja sobre una **copia** del .pbix, nunca el original.
-- Reemplaza nombres de clientes, empleados y proveedores por nombres genéricos (Cliente 001, Región Norte).
-- Multiplica los montos por un factor fijo (por ejemplo 0,73) para conservar las proporciones sin mostrar cifras reales.
-- Revisa títulos, tooltips, filtros y logos: ahí suelen quedar nombres reales.
-- Nunca uses "Publicar en la web" con datos reales: el enlace es público.
-- Si tienes dudas sobre tu contrato de confidencialidad, muestra solo capturas con datos ficticios.
+## Contacto
 
-Para GIFs de la interacción sirven ScreenToGif (Windows) o la grabación de pantalla de tu sistema; mantenlos cortos y livianos (menos de 5 MB).
-
-## Publicar en GitHub Pages
-
-El sitio se publica desde la rama `main`, carpeta raíz (Settings → Pages → Source: "Deploy from a branch").
-Cada cambio que subas a `main` se publica solo en uno o dos minutos en:
-
-https://psvntelices.github.io/portafolio_BI/
+- LinkedIn: [linkedin.com/in/pablosantelices](https://www.linkedin.com/in/pablosantelices)
+- Correo: pabloignaciosnts@gmail.com
