@@ -148,7 +148,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0 40px; margin-top: 
 @media (max-width: 480px) { .nav ul { gap: 14px; font-size: .92rem; flex-wrap: wrap; } }
 
 /* Pantallas grandes: el texto corrido conserva un largo de línea cómodo */
-.project > p, .project > ul { max-width: 78ch; }
+.project > p, .project > ul, .project main > p, .project main > ul { max-width: 78ch; }
 .about-text { max-width: 95ch; }
 @media (min-width: 641px) {
   .about-photo { grid-column: 2; grid-row: 1; }
@@ -204,20 +204,23 @@ pre code { background: none; }
 /* Títulos de contacto como encabezados */
 h2.contact-title, .project h2.contact-title { font-size: 1.15rem; font-weight: 700; line-height: 1.35; margin: 0 0 12px; letter-spacing: 0; }
 
-/* Etiquetas sin cortes internos */
-.tags li { white-space: nowrap; }
+/* Etiquetas: nunca más anchas que su contenedor; la larga solo se corta antes del paréntesis */
+.tags li { max-width: 100%; }
 
 /* Tablet: dos columnas y la última tarjeta impar ocupa todo el ancho */
 @media (min-width: 641px) and (max-width: 1023px) {
   .grid, .skill-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid > .card:last-child:nth-child(odd) { grid-column: 1 / -1; flex-direction: row; }
   .grid > .card:last-child:nth-child(odd) img { width: 50%; aspect-ratio: auto; height: 100%; min-height: 220px; border-bottom: 0; border-right: 1px solid var(--border); }
-  .grid > .card:last-child:nth-child(odd) .body { flex: 1; align-self: center; }
+  .grid > .card:last-child:nth-child(odd) .body { flex: 1; min-width: 0; align-self: center; }
   .skill-groups > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 
 /* Celular: columna fija para las cifras de cada ficha */
 @media (max-width: 640px) {
-  .kpis div { display: grid; grid-template-columns: 8.4rem 1fr; gap: 12px; align-items: baseline; }
+  .kpis div { display: grid; grid-template-columns: 7rem 1fr; gap: 12px; align-items: baseline; }
   .kpis strong { min-width: 0; font-size: 1.1rem; }
 }
+
+/* La nota bajo el informe se alinea con el informe centrado */
+.project .embed-note { max-width: none; width: min(100%, calc((100svh - 110px) * 16 / 9)); margin-inline: auto; }
