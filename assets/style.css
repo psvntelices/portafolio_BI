@@ -180,3 +180,12 @@ footer { border-top: 1px solid var(--border); padding: 28px 0 40px; margin-top: 
 .next-card strong { font-size: 1.05rem; }
 .cta { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent-2); border-radius: var(--radius); padding: 16px 20px; }
 .cta .contact { margin: 0; }
+
+/* Etiquetas más legibles */
+.tags li { font-size: .86rem; padding: 4px 12px; }
+.skill-groups .tags li { font-size: .9rem; }
+
+/* Foco visible al navegar con teclado (no aparece con el mouse) */
+a:focus-visible, summary:focus-visible, button:focus-visible { outline: 2px solid #c4b2ff; outline-offset: 3px; border-radius: 6px; }
+.btn:focus-visible, .dax summary:focus-visible { border-radius: 999px; }
+.card:focus-visible, .next-card:focus-visible, .embed-mobile:focus-visible { outline-offset: 4px; border-radius: var(--radius); }
