@@ -7,7 +7,7 @@
   <meta name="description" content="Dashboard de Power BI que mide qué tanto se respetan las rutas planificadas por un software de ruteo.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/style.css?v=4">
+  <link rel="stylesheet" href="../assets/style.css?v=5">
 </head>
 <body>
   <div class="wrap project">
@@ -26,10 +26,27 @@
     <div class="embed" style="background-image:url(../assets/img/adherencia.png)"><iframe title="Informe Calidad de planificación" src="https://app.powerbi.com/view?r=eyJrIjoiZDQ1M2U2YTEtYTUxYy00YTBhLThiMjQtZDViM2VlYWZiYjNlIiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" loading="lazy" allowfullscreen></iframe></div>
     <p class="embed-note">Datos ficticios con la misma estructura que el original. <a href="https://app.powerbi.com/view?r=eyJrIjoiZDQ1M2U2YTEtYTUxYy00YTBhLThiMjQtZDViM2VlYWZiYjNlIiwidCI6ImM2MWExN2VlLTkzODctNDNkYS04NTlmLTZkZjRkOTllOTA5YiJ9" target="_blank" rel="noopener">Abrir en pantalla completa</a></p>
 
-    <h2>El problema</h2>
-    <p>Cuando un planificador cambia muchas rutas a mano, se pierde el ahorro que calculó el optimizador. Antes no había una forma simple de saber qué clientes, centros de distribución o planificadores se alejaban del plan, ni si la situación mejoraba o empeoraba semana a semana.</p>
+    <div class="biz">
+      <div><h2>Problema</h2><p>Cuando los planificadores cambian muchas rutas a mano, se pierde el ahorro que calculó el optimizador. No había una forma simple de ver quién se alejaba del plan ni si la situación mejoraba o empeoraba.</p></div>
+      <div><h2>Solución</h2><p>Indicadores ponderados de adherencia, salud y factibilidad del plan, analizables por cliente, organización, depot o planificador, con alertas automáticas cuando la calidad cae varias semanas seguidas.</p></div>
+    </div>
 
-    <h2>Datos y proceso</h2>
+    <h2>Decisiones que permite</h2>
+    <ul class="checks">
+      <li>Detectar qué clientes, depots o planificadores se alejan del plan optimizado.</li>
+      <li>Anticipar caídas de calidad antes de que el cliente las note.</li>
+      <li>Priorizar dónde capacitar o conversar primero.</li>
+      <li>Relacionar la calidad del plan con distancia, ocupación y tamaño de entrega.</li>
+    </ul>
+
+    <h2>Resultado</h2>
+    <!-- EDITA: confirma o ajusta con lo que pasó en la práctica -->
+    <p>El equipo pasó de revisar casos aislados a tener una vista semanal de la calidad de planificación por cliente, con alertas automáticas que indican dónde conversar primero.</p>
+
+    <h2>Stack</h2>
+    <p class="stack-line">Power BI · DAX · SQL (PostgreSQL) · Power Query · Parámetros de campo</p>
+
+    <h2>Cómo se construyó</h2>
     <ul>
       <li><strong>Fuente:</strong> consulta SQL sobre PostgreSQL que agrega los itinerarios aprobados de los últimos 14 meses y calcula ponderadores por demanda en la base de datos, para que el modelo cargue solo lo necesario.</li>
       <li><strong>Indicadores ponderados:</strong> adherencia de orden y de pertenencia de cada parada, ponderadas por la cantidad de demandas editadas, en vez de un promedio simple que favorecería a las rutas chicas.</li>
@@ -59,10 +76,6 @@ VAR UltimaSinBaja = MAXX ( FILTER ( ConTendencia, [Semana] &lt;= UltimaSemana &a
 VAR Racha = COUNTROWS ( FILTER ( ConTendencia, [Semana] &gt; UltimaSinBaja &amp;&amp; [Semana] &lt;= UltimaSemana ) )
 RETURN IF ( Racha &gt;= 2, "⚠️ 3 semanas bajando", "OK" )</code></pre>
     </details>
-
-    <h2>Resultado</h2>
-    <!-- EDITA: confirma o ajusta con lo que pasó en la práctica -->
-    <p>El equipo pasó de revisar casos aislados a tener una vista semanal de la calidad de planificación por cliente, con alertas automáticas que indican dónde conversar primero.</p>
 
     <p class="note">Por confidencialidad, los clientes, depots, planificadores y cifras de este caso son ficticios.</p>
 
